@@ -1,0 +1,12 @@
+{
+    "name": "zhaolian/aclm",
+    "require": {
+        "yiisoft/yii": "1.1.14"
+    },
+    "authors": [
+        {
+            "name": "Zhaolian Zhou",
+            "email": "zhaolianzhou92@gmail.com"
+        }
+    ]
+}
