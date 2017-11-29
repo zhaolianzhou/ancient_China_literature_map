@@ -7,4 +7,7 @@ return array(
 	'username' => 'root',
 	'password' => '1111',
 	'charset' => 'utf8',
+    'tablePrefix'=>'',
+    'enableProfiling'=>true,
+    'enableParamLogging'=>true,
 );
