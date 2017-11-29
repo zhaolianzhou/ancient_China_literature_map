@@ -7,6 +7,25 @@ class ToponymyController extends Controller
 		$this->render('index');
 	}
 
+    public function actionView($id){
+
+    }
+
+    public function actionCreate(){
+
+    }
+
+    public function actionUpdate(){
+
+    }
+
+    public function actionList(){
+
+    }
+
+    public function actionSearch(){
+
+    }
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()
