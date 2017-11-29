@@ -40,6 +40,12 @@ class m171126_025444_create_project_table extends CDbMigration
             $this->addForeignKey('author2_fk', 'tbl_relations', 'author_2',
                 'tbl_author', 'id', 'CASCADE', 'CASCADE');
             $transaction->commit();
+
+//            //create the table of toponymy
+//            $this->createTable('tbl_toponymy',array(
+//
+//            ),'ENGINE = InnoDB');
+
         }
         catch (Exception $e){
 	        echo "Exception: ".$e->getMessage().'\n';
