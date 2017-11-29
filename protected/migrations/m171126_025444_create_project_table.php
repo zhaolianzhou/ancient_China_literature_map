@@ -32,12 +32,12 @@ class m171126_025444_create_project_table extends CDbMigration
             $this->createTable('tbl_relations', array(
                 'id' => 'pk',
                 'relations' => 'string NOT NULL',
-                'author_1' => 'string NOT NULL',
-                'author_2' => 'string NOT NULL',
+                'author_1' => 'int(11) NOT NULL',
+                'author_2' => 'int(11) NOT NULL',
             ), 'ENGINE = InnoDB');
-            $this->addForeignKey('fk_author', 'tbl_relations', 'author_1',
+            $this->addForeignKey('author1_fk', 'tbl_relations', 'author_1',
                 'tbl_author', 'id', 'CASCADE', 'CASCADE');
-            $this->addForeignKey('fk_author', 'tbl_relations', 'author_2',
+            $this->addForeignKey('author2_fk', 'tbl_relations', 'author_2',
                 'tbl_author', 'id', 'CASCADE', 'CASCADE');
             $transaction->commit();
         }
