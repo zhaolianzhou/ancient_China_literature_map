@@ -41,10 +41,32 @@ class m171126_025444_create_project_table extends CDbMigration
                 'tbl_author', 'id', 'CASCADE', 'CASCADE');
             $transaction->commit();
 
-//            //create the table of toponymy
-//            $this->createTable('tbl_toponymy',array(
-//
-//            ),'ENGINE = InnoDB');
+            //create the table of toponymy
+            $this->createTable('tbl_toponymy',array(
+                'id' => 'pk',
+                'current_name' => 'string',
+                'ancient_name' => 'string',
+                'start_chronology' => 'int(11)',
+                'end_chronology' => 'int(11)',
+                'start_year' => 'int(6)',
+                'end_year' => 'int(6)',
+            ),'ENGINE = InnoDB');
+            $this->addForeignKey('start_fk', 'tbl_toponymy','start_chronology',
+                'tbl_chronology', 'id');
+            $this->addForeignKey('start_fk', 'tbl_toponymy','end_chronology',
+                'tbl_chronology', 'id');
+
+            $this->createTable("tbl_literature",array(
+                'id' =>'pk',
+                'title' => 'string not null',
+                'author' => 'int(11)',
+                'content' => 'text',
+                'written_time' => 'int(11)',
+                'position' => 'int(11)',
+                'type' => 'int(11)',
+            ),'ENGINE = InnoDB');
+
+
 
         }
         catch (Exception $e){
@@ -56,6 +78,8 @@ class m171126_025444_create_project_table extends CDbMigration
 
 	public function down()
 	{
+	    $this->dropTable("tbl_literature");
+	    $this->dropTable("tbl_toponymy");
         $this->dropTable('tbl_relations');
         $this->dropTable('tbl_chronology');
         $this->dropTable('tbl_author');
