@@ -53,7 +53,7 @@ class m171126_025444_create_project_table extends CDbMigration
             ),'ENGINE = InnoDB');
             $this->addForeignKey('start_fk', 'tbl_toponymy','start_chronology',
                 'tbl_chronology', 'id');
-            $this->addForeignKey('start_fk', 'tbl_toponymy','end_chronology',
+            $this->addForeignKey('end_fk', 'tbl_toponymy','end_chronology',
                 'tbl_chronology', 'id');
 
             $this->createTable("tbl_literature",array(
@@ -61,12 +61,13 @@ class m171126_025444_create_project_table extends CDbMigration
                 'title' => 'string not null',
                 'author' => 'int(11)',
                 'content' => 'text',
-                'written_time' => 'int(11)',
+                'written_time' => 'date',
                 'position' => 'int(11)',
                 'type' => 'int(11)',
             ),'ENGINE = InnoDB');
 
-
+            $this->addForeignKey('position_fk', 'tbl_literature', 'position',
+                'tbl_toponymy', 'id');
 
         }
         catch (Exception $e){
