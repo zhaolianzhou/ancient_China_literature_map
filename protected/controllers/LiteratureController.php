@@ -1,6 +1,6 @@
 <?php
 
-class ChronologyController extends Controller
+class LiteratureController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,14 +62,14 @@ class ChronologyController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Chronology;
+		$model=new Literature;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Chronology']))
+		if(isset($_POST['Literature']))
 		{
-			$model->attributes=$_POST['Chronology'];
+			$model->attributes=$_POST['Literature'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -91,9 +91,9 @@ class ChronologyController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Chronology']))
+		if(isset($_POST['Literature']))
 		{
-			$model->attributes=$_POST['Chronology'];
+			$model->attributes=$_POST['Literature'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -122,7 +122,7 @@ class ChronologyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Chronology');
+		$dataProvider=new CActiveDataProvider('Literature');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -133,10 +133,10 @@ class ChronologyController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Chronology('search');
+		$model=new Literature('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Chronology']))
-			$model->attributes=$_GET['Chronology'];
+		if(isset($_GET['Literature']))
+			$model->attributes=$_GET['Literature'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -147,12 +147,12 @@ class ChronologyController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Chronology the loaded model
+	 * @return Literature the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Chronology::model()->findByPk($id);
+		$model=Literature::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -160,11 +160,11 @@ class ChronologyController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Chronology $model the model to be validated
+	 * @param Literature $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='chronology-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='literature-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

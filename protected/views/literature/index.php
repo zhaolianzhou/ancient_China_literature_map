@@ -1,18 +1,18 @@
 <?php
-/* @var $this ToponymyController */
+/* @var $this LiteratureController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Toponymies',
+	'Literatures',
 );
 
 $this->menu=array(
-	array('label'=>'Create Toponymy', 'url'=>array('create')),
-	array('label'=>'Manage Toponymy', 'url'=>array('admin')),
+	array('label'=>'Create Literature', 'url'=>array('create')),
+	array('label'=>'Manage Literature', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Toponymies</h1>
+<h1>Literatures</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
