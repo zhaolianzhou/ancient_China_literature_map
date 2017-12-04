@@ -1,4 +1,5 @@
 <?php
+require_once  'C:/xampp/htdocs/aclm/vendor/autoload.php';
 
 class SiteController extends Controller
 {
@@ -29,7 +30,38 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+        $mpdf = new mPDF();
+        $mpdf->SetHTMLHeader('
+<div style="text-align: center; font-weight: bold;">Examination</div>
+<table width="100%" style="vertical-align: bottom; font-family: serif; 
+    font-size: 8pt; color: #000000; font-weight: bold; font-style: italic;">
+    <tr>
+        <td width="33%">Zhaolian Zhou</td>
+        <td width="33%" align="center"><div class="column">
+        <div>Service: Vitreoretinal</div>
+        <div>CERA No: 17052</div>
+        <div>NHS No: not known</div>
+        <div>DOB: 6 Dec 1992(24)</div>
+        </div></td>
+        <td width="33%" style="text-align: left;">
+        <div>Examination Created: 22 Nov 2017</div>
+        <div>Examination Printed: {DATE j-m-Y}</div>
+</td>
+    </tr>
+</table>','O');
+
+        $mpdf->SetHTMLFooter('
+<table width="100%" style="vertical-align: bottom; font-family: serif; 
+    font-size: 8pt; color: #000000; font-weight: bold; font-style: italic;">
+    <tr>
+        <td width="33%">{DATE j-m-Y}</td>
+        <td width="33%" align="center">Page {PAGENO} of {nbpg}</td>
+        <td width="33%" style="text-align: right;">OpenEyes</td>
+    </tr>
+</table>');  // Note that the second parameter is optional : default = 'O' for ODD
+        $mpdf->Output("test.pdf",I);
+
+//        $this->render('index');
 	}
 
 	/**

@@ -1,7 +1,9 @@
 {
     "name": "zhaolian/aclm",
     "require": {
-        "yiisoft/yii": "1.1.14"
+        "yiisoft/yii": "1.1.14",
+        "mpdf/mpdf": "^6.1",
+        "spipu/html2pdf": "^5.0"
     },
     "authors": [
         {
