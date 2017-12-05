@@ -30,6 +30,11 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
+				array('label'=>'Author', 'url'=> array('author/index')),
+				array('label'=>'Chronology', 'url'=>array('chronology/index')),
+				array('label'=>'Toponymy', 'url'=>array('toponymy/index')),
+				array('label'=>'Relations', 'url'=> array('relations/index')),
+				array('label'=>'Literature','url'=>array('literature/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
