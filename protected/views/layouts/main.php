@@ -29,16 +29,16 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Author', 'url'=> array('author/index')),
-				array('label'=>'', 'url'=>array('chronology/index')),
-				array('label'=>'Toponymy', 'url'=>array('toponymy/index')),
-				array('label'=>'Relations', 'url'=> array('relations/index')),
+				array('label'=>'主頁', 'url'=>array('/site/index')),
+				array('label'=>'作者', 'url'=> array('author/index')),
+				array('label'=>'年表', 'url'=>array('chronology/index')),
+				array('label'=>'地名', 'url'=>array('toponymy/index')),
+				array('label'=>'親友關係', 'url'=> array('relations/index')),
 				array('label'=>'文學作品','url'=>array('literature/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'關於我們', 'url'=>array('/site/page', 'view'=>'about')),
+				array('label'=>'聯繫我們', 'url'=>array('/site/contact')),
+				array('label'=>'登錄', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'退出 ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->

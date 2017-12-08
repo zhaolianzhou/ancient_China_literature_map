@@ -66,11 +66,11 @@ class Author extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'first_name' => 'First Name',
-			'last_name' => 'Last Name',
-			'dob' => 'Dob',
-			'dod' => 'Dod',
-			'gender' => 'Gender',
+			'first_name' => '名',
+			'last_name' => '姓',
+			'dob' => '生日',
+			'dod' => '祭日',
+			'gender' => '性别',
 			'age' => 'Age',
 			'native_place' => 'Native Place',
 		);
