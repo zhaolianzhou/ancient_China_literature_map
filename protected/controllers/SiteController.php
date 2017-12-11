@@ -1,6 +1,4 @@
 <?php
-require_once  'C:/xampp/htdocs/aclm/vendor/autoload.php';
-use Spipu\Html2Pdf\Html2Pdf;
 class SiteController extends Controller
 {
 	/**
