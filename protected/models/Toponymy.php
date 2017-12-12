@@ -64,12 +64,12 @@ class Toponymy extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'current_name' => 'Current Name',
-			'ancient_name' => 'Ancient Name',
-			'start_chronology' => 'Start Chronology',
-			'end_chronology' => 'End Chronology',
-			'start_year' => 'Start Year',
-			'end_year' => 'End Year',
+			'current_name' => '今名',
+			'ancient_name' => '古名',
+			'start_chronology' => '始於',
+			'end_chronology' => '終於',
+			'start_year' => '起始年',
+			'end_year' => '結束年',
 		);
 	}
 

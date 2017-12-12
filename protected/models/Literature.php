@@ -62,12 +62,12 @@ class Literature extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'author' => 'Author',
-			'content' => 'Content',
-			'written_time' => 'Written Time',
-			'position' => 'Position',
-			'type' => 'Type',
+			'title' => '題目',
+			'author' => '作者',
+			'content' => '內容',
+			'written_time' => '創作時間',
+			'position' => '創作地點',
+			'type' => '類型',
 		);
 	}
 

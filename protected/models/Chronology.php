@@ -55,11 +55,11 @@ class Chronology extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'dynasty' => 'Dynasty',
-			'reign_title' => 'Reign Title',
-			'start_year' => 'Start Year',
-			'end_year' => 'End Year',
-			'duration' => 'Duration',
+			'dynasty' => '朝代',
+			'reign_title' => '年號',
+			'start_year' => '起始年',
+			'end_year' => '結束年',
+			'duration' => '時長',
 		);
 	}
 

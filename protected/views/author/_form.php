@@ -49,11 +49,6 @@
 		<?php echo $form->error($model,'gender'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'age'); ?>
-		<?php echo $form->textField($model,'age'); ?>
-		<?php echo $form->error($model,'age'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'native_place'); ?>

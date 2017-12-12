@@ -71,8 +71,7 @@ class Author extends CActiveRecord
 			'dob' => '生日',
 			'dod' => '祭日',
 			'gender' => '性别',
-			'age' => 'Age',
-			'native_place' => 'Native Place',
+			'native_place' => '出生地',
 		);
 	}
 
@@ -100,7 +99,6 @@ class Author extends CActiveRecord
 		$criteria->compare('dob',$this->dob,true);
 		$criteria->compare('dod',$this->dod,true);
 		$criteria->compare('gender',$this->gender,true);
-		$criteria->compare('age',$this->age);
 		$criteria->compare('native_place',$this->native_place,true);
 
 		return new CActiveDataProvider($this, array(

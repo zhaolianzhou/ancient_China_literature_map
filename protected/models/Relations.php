@@ -60,9 +60,9 @@ class Relations extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'relations' => 'Relations',
-			'author_1' => 'Author 1',
-			'author_2' => 'Author 2',
+			'relations' => '關係',
+			'author_1' => '作者1',
+			'author_2' => '作者2',
 		);
 	}
 

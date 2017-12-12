@@ -14,7 +14,6 @@ class m171126_025444_create_project_table extends CDbMigration
                 'dob' => 'datetime DEFAULT NULL',  //date of birth
                 'dod' => 'datetime DEFAULT NULL', //date of death
                 'gender' => 'char(1)',
-                'age' => 'int(3) DEFAULT NULL',
                 'native_place' => 'string',
             ), 'ENGINE = InnoDB  CHARSET=utf8');
 
