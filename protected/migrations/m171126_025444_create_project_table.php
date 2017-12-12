@@ -16,7 +16,7 @@ class m171126_025444_create_project_table extends CDbMigration
                 'gender' => 'char(1)',
                 'age' => 'int(3) DEFAULT NULL',
                 'native_place' => 'string',
-            ), 'ENGINE = InnoDB');
+            ), 'ENGINE = InnoDB  CHARSET=utf8');
 
             //create the table of chronology
             $this->createTable('tbl_chronology', array(
@@ -26,7 +26,7 @@ class m171126_025444_create_project_table extends CDbMigration
                 'start_year' => 'int(6)',
                 'end_year' => 'int(6)',
                 'duration' => 'int(6)',
-            ), 'ENGINE = InnoDB');
+            ), 'ENGINE = InnoDB  CHARSET=utf8');
 
             //create the table of relations between author
             $this->createTable('tbl_relations', array(
@@ -34,7 +34,7 @@ class m171126_025444_create_project_table extends CDbMigration
                 'relations' => 'string NOT NULL',
                 'author_1' => 'int(11) NOT NULL',
                 'author_2' => 'int(11) NOT NULL',
-            ), 'ENGINE = InnoDB');
+            ), 'ENGINE = InnoDB  CHARSET=utf8');
             $this->addForeignKey('author1_fk', 'tbl_relations', 'author_1',
                 'tbl_author', 'id', 'CASCADE', 'CASCADE');
             $this->addForeignKey('author2_fk', 'tbl_relations', 'author_2',
@@ -50,7 +50,7 @@ class m171126_025444_create_project_table extends CDbMigration
                 'end_chronology' => 'int(11)',
                 'start_year' => 'int(6)',
                 'end_year' => 'int(6)',
-            ),'ENGINE = InnoDB');
+            ),'ENGINE = InnoDB  CHARSET=utf8');
             $this->addForeignKey('start_fk', 'tbl_toponymy','start_chronology',
                 'tbl_chronology', 'id');
             $this->addForeignKey('end_fk', 'tbl_toponymy','end_chronology',
@@ -64,7 +64,7 @@ class m171126_025444_create_project_table extends CDbMigration
                 'written_time' => 'date',
                 'position' => 'int(11)',
                 'type' => 'int(11)',
-            ),'ENGINE = InnoDB');
+            ),'ENGINE = InnoDB  CHARSET=utf8');
 
             $this->addForeignKey('position_fk', 'tbl_literature', 'position',
                 'tbl_toponymy', 'id');
