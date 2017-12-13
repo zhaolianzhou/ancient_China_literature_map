@@ -37,7 +37,7 @@
 				array('label'=>'文學作品','url'=>array('literature/index')),
 				array('label'=>'關於我們', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'聯繫我們', 'url'=>array('/site/contact')),
-				array('label'=>'登錄', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'登錄/註冊', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'退出 ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
