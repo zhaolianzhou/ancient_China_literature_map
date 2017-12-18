@@ -28,7 +28,7 @@ class LiteratureController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','authorList'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -142,6 +142,35 @@ class LiteratureController extends Controller
 			'model'=>$model,
 		));
 	}
+
+    /**
+     * @param $term
+     * Get the list of authors to select from
+     */
+	public function actionAuthorList($term){
+	    Yii::log("Term: ".$term);
+        $criteria = new CDbCriteria;
+        $criteria->addSearchCondition('first_name', '', true, 'OR');
+        $criteria->addSearchCondition('last_name', '', true, 'OR');
+
+        $criteria->addSearchCondition('concat(first_name, " ", last_name)', $term, true, 'OR');
+        $criteria->addSearchCondition('LOWER(concat(first_name, " ", last_name))', $term, true, 'OR');
+
+        $authors = Author::model()->findAll($criteria);
+
+        $output = array();
+        foreach($authors as $author){
+            $output[] = array(
+                'label' => $author->last_name.$author->first_name,
+                'value' => $author->last_name.$author->first_name,
+                'id' => $author->id
+            );
+        }
+
+        echo CJSON::encode($output);
+
+        Yii::app()->end();
+    }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

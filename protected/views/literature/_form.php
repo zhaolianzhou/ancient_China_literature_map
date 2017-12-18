@@ -27,8 +27,57 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'author'); ?>
-		<?php echo $form->textField($model,'author'); ?>
-		<?php echo $form->error($model,'author'); ?>
+      <?php echo $form->error($model,'author'); ?>
+    <?php
+    $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
+        'name' => 'author_id',
+        'id' => 'autocomplete_author_id',
+        'source' => "js:function(request, response) {
+                    $.ajax({
+							'url': '".Yii::app()->createUrl('/literature/authorList')."',
+							'type':'GET',
+							'data':{
+								'term': request.term,
+							},
+							'success': function(data) {
+								data = $.parseJSON(data);
+								response(data);
+							},
+						});
+              }",
+        'options' => array(
+            'select' => "js:function(event, ui) {
+                                removeSelectedAuthor();
+                                addItem('selected_author_wrapper', ui);   
+                                return false;
+                                }",
+            'response' => 'js:function(event, ui){
+                          if(ui.content.length === 0){
+                            $("#no_author_result").show();
+                          } else {
+                            $("#no_author_result").hide();
+                          }
+                        }',
+            ),
+        'htmlOptions' => array(
+            'placeholder' => 'search Roles',
+        ),
+    ));
+    ?>
+    <div id="selected_author_wrapper" class=" field-row">
+      <div class="column selected_author end alert-box">
+          <span class="name">
+            <?php echo isset($model->author) ? $model->author->first_name : ''; ?>
+          </span>
+        <a href="javascript:void(0)" class="remove right" style="color:blue">remove</a>
+      </div>
+        <?php echo CHtml::hiddenField('Literature[author_id]'
+            , $model->author, array('class' => 'hidden_id')); ?>
+    </div>
+    <div id="no_author_result" class=" field-row hide">
+      <div class="large-offset-4  column selected_gp end">No result
+      </div>
+    </div>
 	</div>
 
 	<div class="row">
@@ -62,3 +111,25 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script>
+  function removeSelectedAuthor() {
+    $('#no_author_result').hide();
+    $('.selected_author span.name').text('');
+    $('#selected_author_wrapper').hide();
+    $('#Contact_author_id').val('-1');
+  }
+
+  function addItem(wrapper_id, ui){
+    var $wrapper = $('#' + wrapper_id);
+    $wrapper.find('span.name').text(ui.item.label);
+    $wrapper.show();
+    $wrapper.find('.hidden_id').val(ui.item.id);
+  }
+
+  $(document).ready(function () {
+    $('#selected_author_wrapper').on('click', '.remove', function () {
+      removeSelectedAuthor();
+    });
+  });
+</script>

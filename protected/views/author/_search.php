@@ -42,11 +42,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'age'); ?>
-		<?php echo $form->textField($model,'age'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'native_place'); ?>
 		<?php echo $form->textField($model,'native_place',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
