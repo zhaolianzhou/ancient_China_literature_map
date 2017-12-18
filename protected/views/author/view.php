@@ -27,7 +27,6 @@ $this->menu=array(
 		'dob',
 		'dod',
 		'gender',
-		'age',
 		'native_place',
 	),
 )); ?>

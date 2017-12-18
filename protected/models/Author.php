@@ -36,7 +36,6 @@ class Author extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('first_name, last_name', 'required'),
-			array('age', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, native_place', 'length', 'max'=>255),
 			array('gender', 'length', 'max'=>1),
 			array('dob, dod', 'safe'),
@@ -117,21 +116,21 @@ class Author extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function getAge($dob, $date_of_death = null, $check_date = null){
-	    if (!$dob){
-	        return 'Unknown';
-        }
-
-        $dob_datetime = new DateTime($dob);
-	    $check_datetime = new DateTime($check_date);
-
-	    if ($date_of_death) {
-	        $dod_datetime = new DateTime($date_of_death);
-	        if ($check_datetime->diff($dod_datetime)->invert) {
-	            $check_datetime = $dod_datetime;
-            }
-        }
-
-        return $dob_datetime->diff($check_datetime)->y;
-    }
+//	public function getAge($dob, $date_of_death = null, $check_date = null){
+//	    if (!$dob){
+//	        return 'Unknown';
+//        }
+//
+//        $dob_datetime = new DateTime($dob);
+//	    $check_datetime = new DateTime($check_date);
+//
+//	    if ($date_of_death) {
+//	        $dod_datetime = new DateTime($date_of_death);
+//	        if ($check_datetime->diff($dod_datetime)->invert) {
+//	            $check_datetime = $dod_datetime;
+//            }
+//        }
+//
+//        return $dob_datetime->diff($check_datetime)->y;
+//    }
 }

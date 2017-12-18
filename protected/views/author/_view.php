@@ -29,9 +29,6 @@
 	<?php echo CHtml::encode($data->gender); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('age')); ?>:</b>
-	<?php echo CHtml::encode($data->age); ?>
-	<br />
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('native_place')); ?>:</b>
