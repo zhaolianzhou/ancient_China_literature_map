@@ -29,6 +29,13 @@
 	<?php echo CHtml::encode($data->gender); ?>
 	<br />
 
+  <b><?php echo CHtml::encode($data->getAttributeLabel('courtesy_name')); ?>:</b>
+    <?php echo CHtml::encode($data->courtesy_name); ?>
+  <br />
+
+  <b><?php echo CHtml::encode($data->getAttributeLabel('pseudonmy')); ?>:</b>
+    <?php echo CHtml::encode($data->pseudonmy); ?>
+  <br />
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('native_place')); ?>:</b>

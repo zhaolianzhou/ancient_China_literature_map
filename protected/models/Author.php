@@ -10,8 +10,9 @@
  * @property string $dob
  * @property string $dod
  * @property string $gender
- * @property integer $age
  * @property string $native_place
+ * @property string $courtesy_name
+ * @property string $pseudonmy
  *
  * The followings are the available model relations:
  * @property Relations[] $relations
@@ -36,7 +37,7 @@ class Author extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('first_name, last_name', 'required'),
-			array('first_name, last_name, native_place', 'length', 'max'=>255),
+			array('first_name, last_name, native_place, courtesy_name, pseudonmy', 'length', 'max'=>255),
 			array('gender', 'length', 'max'=>1),
 			array('dob, dod', 'safe'),
 			// The following rule is used by search().
@@ -71,6 +72,8 @@ class Author extends CActiveRecord
 			'dod' => '祭日',
 			'gender' => '性别',
 			'native_place' => '出生地',
+            'courtesy_name' => '字',
+            'pseudonmy' => '号',
 		);
 	}
 
@@ -99,8 +102,11 @@ class Author extends CActiveRecord
 		$criteria->compare('dod',$this->dod,true);
 		$criteria->compare('gender',$this->gender,true);
 		$criteria->compare('native_place',$this->native_place,true);
+        $criteria->compare('courtesy_name',$this->courtesy_name,true);
+        $criteria->compare('pseudonmy',$this->pseudonmy,true);
 
-		return new CActiveDataProvider($this, array(
+
+        return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
@@ -116,21 +122,25 @@ class Author extends CActiveRecord
 		return parent::model($className);
 	}
 
-//	public function getAge($dob, $date_of_death = null, $check_date = null){
-//	    if (!$dob){
-//	        return 'Unknown';
-//        }
-//
-//        $dob_datetime = new DateTime($dob);
-//	    $check_datetime = new DateTime($check_date);
-//
-//	    if ($date_of_death) {
-//	        $dod_datetime = new DateTime($date_of_death);
-//	        if ($check_datetime->diff($dod_datetime)->invert) {
-//	            $check_datetime = $dod_datetime;
-//            }
-//        }
-//
-//        return $dob_datetime->diff($check_datetime)->y;
-//    }
+	public function getAge($dob, $date_of_death = null, $check_date = null){
+	    if (!$dob){
+	        return 'Unknown';
+        }
+
+        $dob_datetime = new DateTime($dob);
+	    $check_datetime = new DateTime($check_date);
+
+	    if ($date_of_death) {
+	        $dod_datetime = new DateTime($date_of_death);
+	        if ($check_datetime->diff($dod_datetime)->invert) {
+	            $check_datetime = $dod_datetime;
+            }
+        }
+
+        return $dob_datetime->diff($check_datetime)->y;
+    }
+
+    public function getFullName(){
+	    return implode(' ', $this->last_name, $this->first_name);
+    }
 }

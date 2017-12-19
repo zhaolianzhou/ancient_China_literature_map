@@ -51,10 +51,22 @@
 
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'native_place'); ?>
-		<?php echo $form->textField($model,'native_place',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'native_place'); ?>
-	</div>
+        <?php echo $form->labelEx($model,'native_place'); ?>
+        <?php echo $form->textField($model,'native_place',array('size'=>60,'maxlength'=>255)); ?>
+        <?php echo $form->error($model,'native_place'); ?>
+  </div>
+
+  <div class="row">
+      <?php echo $form->labelEx($model,'courtesy_name'); ?>
+      <?php echo $form->textField($model,'courtesy_name',array('size'=>60,'maxlength'=>255)); ?>
+      <?php echo $form->error($model,'courtesy_name'); ?>
+  </div>
+
+  <div class="row">
+      <?php echo $form->labelEx($model,'pseudonmy'); ?>
+      <?php echo $form->textField($model,'pseudonmy',array('size'=>60,'maxlength'=>255)); ?>
+      <?php echo $form->error($model,'pseudonmy'); ?>
+  </div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
