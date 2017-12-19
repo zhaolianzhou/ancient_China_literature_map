@@ -61,12 +61,12 @@ class m171126_025444_create_project_table extends CDbMigration
                 'author' => 'int(11)',
                 'content' => 'text',
                 'written_time' => 'date',
-                'position' => 'int(11)',
+                'location' => 'int(11)',
                 'type' => 'int(11)',
             ),'ENGINE = InnoDB  CHARSET=utf8');
 
-            $this->addForeignKey('position_fk', 'tbl_literature', 'position',
-                'tbl_toponymy', 'id');
+            $this->addForeignKey('location_fk', 'tbl_literature', 'location',
+                'tbl_toponymy', 'id','CASCADE', 'CASCADE');
 
         }
         catch (Exception $e){
