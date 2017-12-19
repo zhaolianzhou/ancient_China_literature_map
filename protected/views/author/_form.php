@@ -63,9 +63,9 @@
   </div>
 
   <div class="row">
-      <?php echo $form->labelEx($model,'pseudonmy'); ?>
-      <?php echo $form->textField($model,'pseudonmy',array('size'=>60,'maxlength'=>255)); ?>
-      <?php echo $form->error($model,'pseudonmy'); ?>
+      <?php echo $form->labelEx($model,'pseudonym'); ?>
+      <?php echo $form->textField($model,'pseudonym',array('size'=>60,'maxlength'=>255)); ?>
+      <?php echo $form->error($model,'pseudonym'); ?>
   </div>
 
 	<div class="row buttons">

@@ -33,8 +33,8 @@
     <?php echo CHtml::encode($data->courtesy_name); ?>
   <br />
 
-  <b><?php echo CHtml::encode($data->getAttributeLabel('pseudonmy')); ?>:</b>
-    <?php echo CHtml::encode($data->pseudonmy); ?>
+  <b><?php echo CHtml::encode($data->getAttributeLabel('pseudonym')); ?>:</b>
+    <?php echo CHtml::encode($data->pseudonym); ?>
   <br />
 
 	<?php /*

@@ -39,7 +39,7 @@ class Author extends CActiveRecord
 			array('first_name, last_name', 'required'),
 			array('first_name, last_name, native_place, courtesy_name, pseudonmy', 'length', 'max'=>255),
 			array('gender', 'length', 'max'=>1),
-			array('dob, dod', 'safe'),
+			array('dob, dod, pseudonym, courtesy_name', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, first_name, last_name, dob, dod, gender, age, native_place', 'safe', 'on'=>'search'),
@@ -73,7 +73,7 @@ class Author extends CActiveRecord
 			'gender' => '性别',
 			'native_place' => '出生地',
             'courtesy_name' => '字',
-            'pseudonmy' => '号',
+            'pseudonym' => '号',
 		);
 	}
 
@@ -103,7 +103,7 @@ class Author extends CActiveRecord
 		$criteria->compare('gender',$this->gender,true);
 		$criteria->compare('native_place',$this->native_place,true);
         $criteria->compare('courtesy_name',$this->courtesy_name,true);
-        $criteria->compare('pseudonmy',$this->pseudonmy,true);
+        $criteria->compare('pseudonym',$this->pseudonym,true);
 
 
         return new CActiveDataProvider($this, array(

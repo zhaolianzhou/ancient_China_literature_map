@@ -29,6 +29,6 @@ $this->menu=array(
 		'gender',
 		'native_place',
       'courtesy_name',
-      'pseudonmy',
+      'pseudonym',
 	),
 )); ?>
