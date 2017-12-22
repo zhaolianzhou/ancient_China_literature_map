@@ -40,6 +40,7 @@ $this->pageTitle=Yii::app()->name;
     text-shadow: #000 0 1px;
     padding: 5px;
     border-radius: 10px;
+    min-width: 100px;
     background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
     background: -webkit-gradient(linear, left top, right top,
     color-stop(0, rgb(0,0,0)),
@@ -95,8 +96,6 @@ $this->pageTitle=Yii::app()->name;
   .tab-content {
     padding: 5px;
     border-radius:10px;
-    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
-    background:#fff;
   }
 
   .tab {
@@ -147,7 +146,7 @@ $this->pageTitle=Yii::app()->name;
     </div>
 
     <div id="tab5" class="tab active">
-      <?php $this->renderPartial('drag_drop', array('tables'=>$tables)); ?>
+      <?php $this->renderPartial('drag_drop', array('tables'=>$tables, 'columns'=>$columns)); ?>
     </div>
   </div>
 </div>
@@ -174,7 +173,6 @@ $this->pageTitle=Yii::app()->name;
 
   function handleDragStart(e) {
     this.style.opacity = '0.4';
-
     dragSrcEl = this;
 
     e.dataTransfer.effectAllowed = 'move';
@@ -204,7 +202,10 @@ $this->pageTitle=Yii::app()->name;
 
     if (dragSrcEl != this ) {
       // dragSrcEl.innerHTML = this.innerHTML;
+      dragSrcEl.style.opacity = '1.0';
       this.appendChild(dragSrcEl);
+      this.innerHTML+="<div class='something'>&#x2192;</div>";
+
     }
     return false;
   }
@@ -222,14 +223,18 @@ $this->pageTitle=Yii::app()->name;
     col.addEventListener('dragenter', handleDragEnter, false);
     col.addEventListener('dragover', handleDragOver, false);
     col.addEventListener('dragleave', handleDragLeave, false);
-    col.addEventListener('drop', handleDrop, false);
     col.addEventListener('dragend', handleDragEnd, false);
   });
 
   var drop_pad = document.getElementById("drop_pad");
   drop_pad.addEventListener('drop', handleDrop, false);
   drop_pad.addEventListener('dragover', handleDragOver, false);
-
+  var drag_pad_A = document.getElementById("tabA");
+  var drag_pad_B = document.getElementById("tabB");
+  drag_pad_A.addEventListener('drop', handleDrop, false);
+  drag_pad_A.addEventListener('dragover', handleDragOver, false);
+  drag_pad_B.addEventListener('drop', handleDrop, false);
+  drag_pad_B.addEventListener('dragover', handleDragOver, false);
   jQuery(document).ready(function() {
     jQuery('.tabs .tab-links a').on('click', function(e)  {
       var currentAttrValue = jQuery(this).attr('href');

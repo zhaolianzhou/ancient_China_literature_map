@@ -31,7 +31,12 @@ class SiteController extends Controller
         $connection = Yii::app()->db;
         $dbSchema = $connection->schema;
         $tables = $dbSchema->getTables();
-        $this->render('index', array('tables'=>$tables));
+        $columns = array();
+        foreach ($tables as $table) {
+            $columns=array_merge($columns,$table->columnNames);
+        }
+        $columns = array_unique($columns);
+        $this->render('index', array('tables'=>$tables, 'columns'=>$columns));
 	}
 
 	/**

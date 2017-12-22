@@ -33,21 +33,21 @@
             <li class="active"><a href="#tabA">Tables</a></li>
             <li><a href="#tabB">Data Points</a></li>
           </ul>
-          <div class="tab-content">
-            <div id="tabA" class="tab">
+          <div class="tab-content" style="height: inherit;">
+            <div id="tabA" class="tab active" draggable="true" style="min-height: 500px;">
                 <?php foreach ($tables as $tb){ ?>
-                  <div class="column" draggable="true">
-                      <?php echo $tb->rawName; ?>
+                  <div class="column" draggable="true" style="color:red;">
+                      <?php echo $tb->name; ?>
                   </div>
                 <?php }?>
             </div>
-            <div id="tabB" class="tab">
-                <?php foreach ($tables as $tb){
-                  foreach ($tb->columnNames as $dp) {?>
-                  <div class="column" draggable="true">
+            <div id="tabB" class="tab" >
+                <?php
+                  foreach ($columns as $dp) {?>
+                  <div class="column" draggable="true" >
                       <?php echo  $dp; ?>
                   </div>
-                <?php }}?>
+                <?php }?>
             </div>
           </div>
         </div>
