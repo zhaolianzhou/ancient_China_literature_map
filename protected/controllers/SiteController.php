@@ -28,8 +28,10 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-
-        $this->render('index');
+        $connection = Yii::app()->db;
+        $dbSchema = $connection->schema;
+        $tables = $dbSchema->getTables();
+        $this->render('index', array('tables'=>$tables));
 	}
 
 	/**

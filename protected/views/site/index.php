@@ -3,6 +3,8 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <style>
   /* Prevent the text contents of draggable elements from being selectable. */
   [draggable] {
@@ -14,31 +16,30 @@ $this->pageTitle=Yii::app()->name;
     -khtml-user-drag: element;
     -webkit-user-drag: element;
   }
-  .column {
-    height: 150px;
-    width: 150px;
-    float: left;
-    border: 2px solid #666666;
-    background-color: #ccc;
-    margin-right: 5px;
-    -webkit-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 3px #000;
-    -ms-box-shadow: inset 0 0 3px #000;
-    box-shadow: inset 0 0 3px #000;
-    text-align: center;
-    cursor: move;
-  }
+  /*.column {*/
+    /*height: 140px;*/
+    /*width: 140px;*/
+    /*border: 2px solid #666666;*/
+    /*background-color: #ccc;*/
+
+    /*-webkit-border-radius: 10px;*/
+    /*-ms-border-radius: 10px;*/
+    /*-moz-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+    /*-webkit-box-shadow: inset 0 0 3px #000;*/
+    /*-ms-box-shadow: inset 0 0 3px #000;*/
+    /*box-shadow: inset 0 0 3px #000;*/
+    /*text-align: center;*/
+    /*cursor: move;*/
+  /*}*/
   .column.over {
     border: 2px dashed #000;
   }
-  .column header {
+  .column {
     color: #fff;
     text-shadow: #000 0 1px;
-    box-shadow: 5px;
     padding: 5px;
+    border-radius: 10px;
     background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
     background: -webkit-gradient(linear, left top, right top,
     color-stop(0, rgb(0,0,0)),
@@ -47,14 +48,8 @@ $this->pageTitle=Yii::app()->name;
     background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
     background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
     border-bottom: 1px solid #ddd;
-    -webkit-border-top-left-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -ms-border-radius-topleft: 10px;
-    border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -ms-border-top-right-radius: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-right-radius: 10px;
+    text-align: center;
+    cursor: move;
   }
 
   .tabs {
@@ -98,8 +93,8 @@ $this->pageTitle=Yii::app()->name;
 
   /*--------- Content of Tabs ----------*/
   .tab-content {
-    padding: 15px;
-    border-radius:3px;
+    padding: 5px;
+    border-radius:10px;
     box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
     background:#fff;
   }
@@ -114,14 +109,15 @@ $this->pageTitle=Yii::app()->name;
 </style>
 <div class="tabs">
   <ul class="tab-links">
-    <li class="active"><a href="#tab1">Drag&Drop</a></li>
+    <li><a href="#tab1">Drag&Drop</a></li>
     <li><a href="#tab2">Multiple Drags</a></li>
     <li><a href="#tab3">Drag Image</a></li>
-    <li><a href="#tab4">Dargging Files</a></li>
+    <li><a href="#tab4">Dragging Files</a></li>
+    <li class="active"><a href="#tab5">Drag Classes Items</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="tab1" class="tab active">
+    <div id="tab1" class="tab">
       <p>Drag and Drop Test</p>
       <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"
            style="width: 350px; height: 70px; padding: 10px; border: 1px solid #aaaaaa;">
@@ -135,8 +131,8 @@ $this->pageTitle=Yii::app()->name;
       </div>
     </div>
 
-    <div id="tab2" class="tab active">
-      <div id="columns">
+    <div id="tab2" class="tab">
+      <div class="columns">
         <div class="column" draggable="true"><header>A</header></div>
         <div class="column" draggable="true"><header>B</header></div>
         <div class="column" draggable="true"><header>C</header></div>
@@ -144,16 +140,21 @@ $this->pageTitle=Yii::app()->name;
       </div>
     </div>
 
-    <div id="tab3" class="tab active">
-      <?php echo Chtml::image(Yii::app()->request->baseUrl. '/images/bunny.jpg', 'alt 1'); ?>
+    <div id="tab3" class="tab">
     </div>
 
-    <div id="tab4" class="tab active">
+    <div id="tab4" class="tab ">
+    </div>
 
+    <div id="tab5" class="tab active">
+      <?php $this->renderPartial('drag_drop', array('tables'=>$tables)); ?>
     </div>
   </div>
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
   function allowDrop(ev) {
@@ -202,8 +203,8 @@ $this->pageTitle=Yii::app()->name;
     }
 
     if (dragSrcEl != this ) {
-      dragSrcEl.innerHTML = this.innerHTML;
-      this.innerHTML = e.dataTransfer.getData('text/html');
+      // dragSrcEl.innerHTML = this.innerHTML;
+      this.appendChild(dragSrcEl);
     }
     return false;
   }
@@ -215,7 +216,7 @@ $this->pageTitle=Yii::app()->name;
   }
 
 
-  var cols = document.querySelectorAll('#columns .column');
+  var cols = document.querySelectorAll('.columns .column');
   [].forEach.call(cols, function(col) {
     col.addEventListener('dragstart', handleDragStart, false);
     col.addEventListener('dragenter', handleDragEnter, false);
@@ -223,7 +224,11 @@ $this->pageTitle=Yii::app()->name;
     col.addEventListener('dragleave', handleDragLeave, false);
     col.addEventListener('drop', handleDrop, false);
     col.addEventListener('dragend', handleDragEnd, false);
-  })
+  });
+
+  var drop_pad = document.getElementById("drop_pad");
+  drop_pad.addEventListener('drop', handleDrop, false);
+  drop_pad.addEventListener('dragover', handleDragOver, false);
 
   jQuery(document).ready(function() {
     jQuery('.tabs .tab-links a').on('click', function(e)  {
