@@ -24,7 +24,6 @@
     <div class="row">
       <div class="col-lg-7 col-md-7 col-sm-7 drop_container">
         <div class="box drop_areas" id="drop_pad" draggable="true">
-
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 columns drag_container">

@@ -204,8 +204,7 @@ $this->pageTitle=Yii::app()->name;
       // dragSrcEl.innerHTML = this.innerHTML;
       dragSrcEl.style.opacity = '1.0';
       this.appendChild(dragSrcEl);
-      this.innerHTML+="<div class='something'>&#x2192;</div>";
-
+      // this.innerHTML+="<div class='something'>&#x2192;</div>";
     }
     return false;
   }
