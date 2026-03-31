@@ -1,0 +1,71 @@
+import axios from 'axios';
+import type { Poet, PoetDetail, PoetTrace, Poem, Location, HeatmapPoint, Stats } from '../types';
+
+const BASE_URL = 'http://localhost:8000';
+
+const api = axios.create({
+  baseURL: BASE_URL,
+  timeout: 10000,
+});
+
+// ── Poets ──────────────────────────────────────────────────────────────────
+
+export async function fetchPoets(): Promise<{ total: number; poets: Poet[] }> {
+  const { data } = await api.get('/api/poets/');
+  return data;
+}
+
+export async function fetchPoet(name: string): Promise<PoetDetail> {
+  const { data } = await api.get(`/api/poets/${encodeURIComponent(name)}`);
+  return data;
+}
+
+export async function fetchPoetTrace(name: string): Promise<PoetTrace> {
+  const { data } = await api.get(`/api/poets/${encodeURIComponent(name)}/trace`);
+  return data;
+}
+
+// ── Poems ──────────────────────────────────────────────────────────────────
+
+export async function fetchPoems(params?: {
+  author?: string;
+  location?: string;
+  skip?: number;
+  limit?: number;
+}): Promise<{ total: number; poems: Poem[] }> {
+  const { data } = await api.get('/api/poems/', { params });
+  return data;
+}
+
+export async function fetchPoem(id: number): Promise<Poem> {
+  const { data } = await api.get(`/api/poems/${id}`);
+  return data;
+}
+
+// ── Locations ─────────────────────────────────────────────────────────────
+
+export async function fetchLocations(): Promise<{ total: number; locations: Location[] }> {
+  const { data } = await api.get('/api/locations/');
+  return data;
+}
+
+export async function fetchHeatmap(): Promise<{ total: number; heatmap: HeatmapPoint[] }> {
+  const { data } = await api.get('/api/locations/heatmap');
+  return data;
+}
+
+export async function fetchPoemsAtLocation(name: string): Promise<{
+  location: Location;
+  poem_count: number;
+  poems: Poem[];
+}> {
+  const { data } = await api.get(`/api/locations/${encodeURIComponent(name)}/poems`);
+  return data;
+}
+
+// ── Stats ─────────────────────────────────────────────────────────────────
+
+export async function fetchStats(): Promise<Stats> {
+  const { data } = await api.get('/api/stats');
+  return data;
+}
